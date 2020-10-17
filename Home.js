@@ -27,12 +27,13 @@ class First extends Component {
   };
 
   createNew = (text) => {
-    this.setState((prevState) => {
-      tasks: prevState.tasks.push({
-        text,
-        id: prevState.tasks.lenght,
-        authorUsername: 'natko',
-      });
+    this.setState((state) => {
+      const tasks = state.tasks.concat([
+        {text, id: state.tasks.lenght, authorUsername: 'natko'},
+      ]);
+      return {
+        tasks,
+      };
     });
   };
 

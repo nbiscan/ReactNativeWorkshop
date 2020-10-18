@@ -58,6 +58,9 @@ class Signup extends React.Component {
           <TouchableOpacity onPress={this.handleSignup} style={styles.btn}>
             <Text style={styles.title}>Sign up</Text>
           </TouchableOpacity>
+          <TouchableOpacity onPress={() => NavigationService.navigate('Login')}>
+            <Text style={styles.login}>Have account? Log in</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -66,7 +69,7 @@ class Signup extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 100,
+    paddingTop: 50,
     alignItems: 'center',
     backgroundColor: '#0f293b',
     height: '100%',
@@ -74,11 +77,18 @@ const styles = StyleSheet.create({
   },
   background: {
     backgroundColor: '#f76c57',
-    height: '20%',
+    height: '15%',
     zIndex: 1,
   },
+  login: {
+    color: 'white',
+    fontSize: 20,
+    marginTop: 20,
+  },
   mainTitle: {
+    marginTop: 20,
     marginBottom: 20,
+    fontSize: 20,
     fontFamily: 'Verdana',
     color: '#f76c57',
   },

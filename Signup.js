@@ -21,6 +21,7 @@ class Signup extends React.Component {
     // axios
     //   .post({url: 'localhost:3000/buildingconfig', method: 'GET'})
     //   .then((res) => alert(res.data));
+
     NavigationService.navigate('Home');
   }
 

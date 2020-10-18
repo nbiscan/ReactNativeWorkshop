@@ -15,6 +15,14 @@ class Login extends React.Component {
     password: '',
   };
 
+  handleLogin = () => {
+    // axios
+    //   .post({url: 'localhost:3000/buildingconfig', method: 'GET'})
+    //   .then((res) => alert(res.data));
+
+    NavigationService.navigate('Home');
+  };
+
   render() {
     const {email, password} = this.state;
     return (
@@ -39,9 +47,7 @@ class Login extends React.Component {
             onChangeText={(text) => this.setState({password: text})}
             value={password}
           />
-          <TouchableOpacity
-            onPress={() => NavigationService.navigate('Home')}
-            style={styles.btn}>
+          <TouchableOpacity onPress={this.handleLogin} style={styles.btn}>
             <Text style={styles.title}>Login</Text>
           </TouchableOpacity>
         </View>

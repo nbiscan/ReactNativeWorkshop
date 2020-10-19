@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import axios from 'axios';
 import NavigationService from './NavigationService';
+import {elephant, persimmon, white} from './colors';
 
 class Signup extends React.Component {
   state = {
@@ -30,17 +31,16 @@ class Signup extends React.Component {
     return (
       <View>
         <StatusBar barStyle="light-content" />
-        <View style={styles.background} />
         <View style={styles.container}>
-          <Text style={styles.mainTitle}>Create account:</Text>
+          <Text style={styles.mainTitle}>Create an account:</Text>
           <TextInput
-            style={styles.email}
+            style={styles.input}
             placeholder="username"
             onChangeText={(name) => this.setState({name})}
             value={name}
           />
           <TextInput
-            style={styles.email}
+            style={styles.input}
             placeholder="email"
             autoCompleteType="email"
             keyboardType="email-address"
@@ -48,7 +48,7 @@ class Signup extends React.Component {
             value={email}
           />
           <TextInput
-            style={styles.email}
+            style={styles.input}
             placeholder="password"
             autoCompleteType="password"
             secureTextEntry={true}
@@ -57,10 +57,12 @@ class Signup extends React.Component {
             value={password}
           />
           <TouchableOpacity onPress={this.handleSignup} style={styles.btn}>
-            <Text style={styles.title}>Sign up</Text>
+            <Text style={styles.title}>SIGN UP</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => NavigationService.navigate('Login')}>
-            <Text style={styles.login}>Have account? Log in</Text>
+            <Text style={styles.login}>
+              Have an account? <Text style={styles.link}>Log in</Text>
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -72,46 +74,44 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 50,
     alignItems: 'center',
-    backgroundColor: '#0f293b',
+    backgroundColor: elephant,
     height: '100%',
-    padding: 30,
-  },
-  background: {
-    backgroundColor: '#f76c57',
-    height: '15%',
-    zIndex: 1,
+    padding: 24,
   },
   login: {
-    color: 'white',
-    fontSize: 20,
+    color: white,
+    fontSize: 16,
     marginTop: 20,
   },
   mainTitle: {
     marginTop: 20,
     marginBottom: 20,
     fontSize: 20,
-    fontFamily: 'Verdana',
-    color: '#f76c57',
+    color: white,
   },
   title: {
-    fontFamily: 'Verdana',
-    color: '#0f293b',
+    color: white,
+    fontSize: 16,
+    fontWeight: 'bold',
   },
-  email: {
-    backgroundColor: 'white',
-    padding: 10,
+  link: {
+    color: persimmon,
+  },
+  input: {
+    backgroundColor: white,
+    padding: 16,
     height: 50,
     width: '100%',
     marginBottom: 10,
-    borderRadius: 40,
+    borderRadius: 60,
   },
   btn: {
-    width: 100,
+    width: '100%',
     height: 50,
-    borderRadius: 40,
+    borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f76c57',
+    backgroundColor: persimmon,
   },
 });
 

@@ -1,14 +1,6 @@
 import React, {Component} from 'react';
-import {
-  View,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  FlatList,
-} from 'react-native';
-import NavigationService from './NavigationService';
+import {View, StatusBar, StyleSheet, FlatList} from 'react-native';
+import {elephant} from './colors';
 
 class First extends Component {
   static navigationOptions = {
@@ -26,6 +18,13 @@ class First extends Component {
     newTask: '',
   };
 
+  componentDidMount() {
+    // axios({
+    //   url: `localhost:3000/tasks`,
+    //   method: 'GET',
+    // }).then((res) => this.setState({tasks: res.data}));
+  }
+
   createNew = (text) => {
     this.setState((state) => {
       const tasks = state.tasks.concat([
@@ -39,8 +38,8 @@ class First extends Component {
 
   renderItem = ({item}) => (
     <View style={styles.item}>
-      <Text style={styles.task}>Author: {item.authorUsername}</Text>
-      <Text style={styles.task}>Task: {item.text}</Text>
+      {/* Add components in 1 item of the list (task)
+      Remember that you can access needed data using `item` sent using props */}
     </View>
   );
 
@@ -50,17 +49,9 @@ class First extends Component {
       <View>
         <StatusBar barStyle="light-content" />
         <View style={styles.container}>
-          <TextInput
-            style={styles.inputTxt}
-            placeholder="new task"
-            onChangeText={(newTask) => this.setState({newTask})}
-            value={newTask}
-          />
-          <TouchableOpacity
-            onPress={() => this.createNew(newTask)}
-            style={styles.btn}>
-            <Text style={styles.plus}>Create a new task</Text>
-          </TouchableOpacity>
+          {/* Add necessary components here */}
+
+          {/* Use provided flatlist to render tasks fetched and saved in state */}
           <FlatList
             style={styles.list}
             data={tasks}
@@ -75,47 +66,15 @@ class First extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#0f293b',
     height: '100%',
-    padding: 60,
+    paddingTop: 68,
+    padding: 24,
+    backgroundColor: elephant,
   },
-  task: {
-    fontFamily: 'Verdana',
-    fontSize: 20,
-    color: 'white',
-  },
-  list: {marginTop: 60},
-  item: {marginBottom: 100},
-  inputTxt: {
-    backgroundColor: 'white',
-    padding: 10,
-    height: 50,
-    width: '100%',
-    marginBottom: 10,
-    borderRadius: 40,
-  },
-  background: {
-    backgroundColor: '#f76c57',
-    height: '5%',
-    zIndex: 1,
-  },
-  title: {
-    marginTop: 200,
-    fontFamily: 'Verdana',
-    fontSize: 40,
-    color: 'white',
-  },
-  plus: {
-    fontSize: 20,
-    justifyContent: 'center',
-    alignSelf: 'center',
-    color: 'white',
-  },
-  btn: {
-    borderRadius: 40,
-    backgroundColor: '#f76c57',
-    padding: 10,
-  },
+  list: {marginTop: 24},
+  //insert styles below
+
+  //
 });
 
 export default First;

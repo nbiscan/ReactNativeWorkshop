@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {View, StatusBar, StyleSheet, FlatList} from 'react-native';
 import {elephant} from './colors';
+import {_retrieveData} from './localStorage';
+import axios from 'axios';
 
 class First extends Component {
   static navigationOptions = {
@@ -19,8 +21,11 @@ class First extends Component {
   };
 
   componentDidMount() {
+    // add axios call to fetch existing tasks here
+    //
     // axios({
     //   url: `localhost:3000/tasks`,
+    //   headers: {token: _retrieveData('token')},
     //   method: 'GET',
     // }).then((res) => this.setState({tasks: res.data}));
   }
@@ -34,6 +39,8 @@ class First extends Component {
         tasks,
       };
     });
+
+    // use axios and PUT method to create new task
   };
 
   renderItem = ({item}) => (

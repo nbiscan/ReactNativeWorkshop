@@ -6,6 +6,7 @@ import {
   StatusBar,
   TextInput,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import axios from 'axios';
 import NavigationService from './NavigationService';
@@ -20,9 +21,14 @@ class Signup extends React.Component {
 
   handleSignup() {
     // axios({
-    //   url: `localhost:3000/signup/`,
+    //   url: `localhost:3000/signup`,
     //   method: 'POST',
-    // }).then((res) => alert(res.data));
+    //   body: {
+    //     name: this.state.name,
+    //     email: this.state.email,
+    //     password: this.state.password,
+    //   },
+    // }).then((res) => );
 
     NavigationService.navigate('Home');
   }
@@ -33,6 +39,7 @@ class Signup extends React.Component {
       <View>
         <StatusBar barStyle="light-content" />
         <View style={styles.container}>
+          <Image style={styles.logo} source={require('./Logo.png')} />
           <Text style={styles.mainTitle}>Create an account:</Text>
           <TextInput
             style={styles.input}
@@ -73,13 +80,17 @@ class Signup extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 50,
-    alignItems: 'center',
+    paddingTop: 140,
     backgroundColor: elephant,
     height: '100%',
     padding: 24,
   },
+  logo: {
+    marginBottom: 80,
+    alignSelf: 'center',
+  },
   login: {
+    alignSelf: 'center',
     color: white,
     fontSize: 16,
     marginTop: 20,

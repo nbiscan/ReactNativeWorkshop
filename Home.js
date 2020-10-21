@@ -1,12 +1,5 @@
 import React, {Component} from 'react';
-import {
-  View,
-  StatusBar,
-  StyleSheet,
-  FlatList,
-  Text,
-  AsyncStorage,
-} from 'react-native';
+import {View, StatusBar, StyleSheet, FlatList, Text} from 'react-native';
 import {elephant} from './colors';
 import {_retrieveData} from './localStorage';
 import {rootURL} from './services';

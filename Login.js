@@ -43,7 +43,6 @@ class Login extends React.Component {
         <View style={styles.container}>
           {/* Add login components here. Don't forget to import components you need */}
         </View>
-        import {_storeData} from './localStorage';
       </View>
     );
   }

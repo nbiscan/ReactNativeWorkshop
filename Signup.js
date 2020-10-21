@@ -22,7 +22,7 @@ class Signup extends React.Component {
   };
 
   handleSignup = () => {
-    fetch(`${rootURL}/login`, {
+    fetch(`${rootURL}/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ class Signup extends React.Component {
       body: JSON.stringify({
         email: this.state.email,
         password: this.state.password,
-        // name: this.state.name,
+        name: this.state.name,
       }),
     })
       .then((res) => res.json())

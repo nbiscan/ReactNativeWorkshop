@@ -22,7 +22,7 @@ class Signup extends React.Component {
   };
 
   handleSignup = () => {
-    fetch(`${rootURL}/signup`, {
+    fetch(`${rootURL}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -30,16 +30,16 @@ class Signup extends React.Component {
       body: JSON.stringify({
         email: this.state.email,
         password: this.state.password,
-        name: this.state.name,
+        // name: this.state.name,
       }),
     })
       .then((res) => res.json())
-      .then((res) => {
-        _storeData('token', res.authToken);
+      .then(async (res) => {
+        await _storeData('token', res.authToken);
         NavigationService.navigate('Home');
       })
       .catch((e) => {
-        Alert.alert(e);
+        Alert.alert('Something went wrong');
       });
   };
 

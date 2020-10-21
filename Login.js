@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  StatusBar,
-  Image,
-  TextInput,
-  Button,
-  Alert,
-} from 'react-native';
+import {View, StyleSheet, StatusBar, Alert} from 'react-native';
 import {elephant} from './colors';
 import {_storeData} from './localStorage';
 import NavigationService from './NavigationService';
@@ -33,8 +25,8 @@ class Login extends React.Component {
       }),
     })
       .then((res) => res.json())
-      .then((res) => {
-        _storeData('token', res.authToken);
+      .then(async (res) => {
+        await _storeData('token', res.authToken);
         NavigationService.navigate('Home');
       })
       .catch((e) => {
@@ -45,13 +37,13 @@ class Login extends React.Component {
   };
 
   render() {
-    const {email, password} = this.state;
     return (
       <View>
         <StatusBar barStyle="light-content" />
         <View style={styles.container}>
           {/* Add login components here. Don't forget to import components you need */}
         </View>
+        import {_storeData} from './localStorage';
       </View>
     );
   }

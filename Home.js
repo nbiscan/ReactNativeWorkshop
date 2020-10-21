@@ -1,8 +1,15 @@
 import React, {Component} from 'react';
-import {View, StatusBar, StyleSheet, FlatList} from 'react-native';
+import {
+  View,
+  StatusBar,
+  StyleSheet,
+  FlatList,
+  Text,
+  AsyncStorage,
+} from 'react-native';
 import {elephant} from './colors';
 import {_retrieveData} from './localStorage';
-import axios from 'axios';
+import {rootURL} from './services';
 
 class First extends Component {
   static navigationOptions = {
@@ -13,40 +20,33 @@ class First extends Component {
   };
 
   state = {
-    tasks: [
-      {id: 1, text: 'First', authorUsername: 'natko'},
-      {id: 2, text: 'Second', authorUsername: 'natko'},
-    ],
+    tasks: [],
     newTask: '',
   };
 
-  componentDidMount() {
-    // add axios call to fetch existing tasks here
-    //
-    // axios({
-    //   url: `localhost:3000/tasks`,
-    //   headers: {token: _retrieveData('token')},
+  async componentDidMount() {
+    const token = await _retrieveData('token');
+    // fetch(`${rootURL}/tasks`, {
     //   method: 'GET',
-    // }).then((res) => this.setState({tasks: res.data}));
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // });
+    //  finish fetch call which gets tasks by saving them to state
+
+    //
   }
 
   createNew = (text) => {
-    this.setState((state) => {
-      const tasks = state.tasks.concat([
-        {text, id: state.tasks.lenght, authorUsername: 'natko'},
-      ]);
-      return {
-        tasks,
-      };
-    });
-
-    // use axios and PUT method to create new task
+    // add fetch call to fetch existing tasks here
+    //
   };
 
   renderItem = ({item}) => (
     <View style={styles.item}>
       {/* Add components in 1 item of the list (task)
       Remember that you can access needed data using `item` sent using props */}
+      <Text>{item.text}</Text>
     </View>
   );
 
@@ -58,6 +58,7 @@ class First extends Component {
         <View style={styles.container}>
           {/* Add necessary components here */}
 
+          {/* */}
           {/* Use provided flatlist to render tasks fetched and saved in state */}
           <FlatList
             style={styles.list}

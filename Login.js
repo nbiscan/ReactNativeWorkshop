@@ -1,8 +1,16 @@
 import React from 'react';
-import {View, StyleSheet, StatusBar} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  StatusBar,
+  Image,
+  TextInput,
+  Button,
+  Alert,
+} from 'react-native';
 import {elephant} from './colors';
+import {_storeData} from './localStorage';
 import NavigationService from './NavigationService';
-import axios from 'axios';
 import {rootURL} from './services';
 
 class Login extends React.Component {
@@ -12,9 +20,26 @@ class Login extends React.Component {
   };
 
   handleLogin = () => {
-    axios
-      .post({url: `${rootURL}`, method: 'GET'})
-      .then((res) => alert(res.data));
+    const {email, password} = this.state;
+
+    fetch(`${rootURL}/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        _storeData('token', res.authToken);
+        NavigationService.navigate('Home');
+      })
+      .catch((e) => {
+        Alert.alert(e);
+      });
 
     NavigationService.navigate('Home');
   };

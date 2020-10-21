@@ -7,8 +7,8 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  Alert,
 } from 'react-native';
-import axios from 'axios';
 import NavigationService from './NavigationService';
 import {elephant, persimmon, white} from './colors';
 import {rootURL} from './services';
@@ -39,7 +39,7 @@ class Signup extends React.Component {
         NavigationService.navigate('Home');
       })
       .catch((e) => {
-        alert(e);
+        Alert.alert(e);
       });
   };
 
@@ -56,7 +56,7 @@ class Signup extends React.Component {
             placeholder="username"
             onChangeText={(name) => this.setState({name})}
             value={name}
-
+            autoCapitalize="none"
           />
           <TextInput
             style={styles.input}
@@ -65,6 +65,7 @@ class Signup extends React.Component {
             keyboardType="email-address"
             onChangeText={(email) => this.setState({email})}
             value={email}
+            autoCapitalize="none"
           />
           <TextInput
             style={styles.input}

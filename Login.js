@@ -2,6 +2,8 @@ import React from 'react';
 import {View, StyleSheet, StatusBar} from 'react-native';
 import {elephant} from './colors';
 import NavigationService from './NavigationService';
+import axios from 'axios';
+import {rootURL} from './services';
 
 class Login extends React.Component {
   state = {
@@ -10,9 +12,9 @@ class Login extends React.Component {
   };
 
   handleLogin = () => {
-    // axios
-    //   .post({url: 'localhost:3000/buildingconfig', method: 'GET'})
-    //   .then((res) => alert(res.data));
+    axios
+      .post({url: `${rootURL}`, method: 'GET'})
+      .then((res) => alert(res.data));
 
     NavigationService.navigate('Home');
   };

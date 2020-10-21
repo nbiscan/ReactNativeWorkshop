@@ -11,6 +11,8 @@ import {
 import axios from 'axios';
 import NavigationService from './NavigationService';
 import {elephant, persimmon, white} from './colors';
+import {rootURL} from './services';
+import {_storeData} from './localStorage';
 
 class Signup extends React.Component {
   state = {
@@ -19,19 +21,27 @@ class Signup extends React.Component {
     password: '',
   };
 
-  handleSignup() {
-    // axios({
-    //   url: `localhost:3000/signup`,
-    //   method: 'POST',
-    //   body: {
-    //     name: this.state.name,
-    //     email: this.state.email,
-    //     password: this.state.password,
-    //   },
-    // }).then((res) => );
-
-    NavigationService.navigate('Home');
-  }
+  handleSignup = () => {
+    fetch(`${rootURL}/signup`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+        name: this.state.name,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        _storeData('token', res.authToken);
+        NavigationService.navigate('Home');
+      })
+      .catch((e) => {
+        alert(e);
+      });
+  };
 
   render() {
     const {email, password, name} = this.state;
@@ -46,6 +56,7 @@ class Signup extends React.Component {
             placeholder="username"
             onChangeText={(name) => this.setState({name})}
             value={name}
+
           />
           <TextInput
             style={styles.input}
@@ -64,7 +75,9 @@ class Signup extends React.Component {
             onChangeText={(password) => this.setState({password})}
             value={password}
           />
-          <TouchableOpacity onPress={this.handleSignup} style={styles.btn}>
+          <TouchableOpacity
+            onPress={() => this.handleSignup()}
+            style={styles.btn}>
             <Text style={styles.title}>SIGN UP</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => NavigationService.navigate('Login')}>

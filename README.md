@@ -42,4 +42,7 @@ Main goals of this workshop are:
     1. Get existing tasks
 
     2. Create a new task
+    
+Please leave your feedback on this short form 🙏 :
+https://forms.gle/uXJVnLuJcJLUNKMW9
 

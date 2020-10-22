@@ -31,7 +31,8 @@ class First extends Component {
   }
 
   createNew = (text) => {
-    // add fetch call to fetch existing tasks here
+    // add API call to create new tasks here
+    // Make sure to add Content-type: 'application/json' as one of the headers
     //
   };
 

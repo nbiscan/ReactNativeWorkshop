@@ -54,7 +54,7 @@ class Signup extends React.Component {
           <TextInput
             style={styles.input}
             placeholder="username"
-            onChangeText={(name) => this.setState({name})}
+            onChangeText={(nameValue) => this.setState({name: nameValue})}
             value={name}
             autoCapitalize="none"
           />
@@ -63,7 +63,7 @@ class Signup extends React.Component {
             placeholder="email"
             autoCompleteType="email"
             keyboardType="email-address"
-            onChangeText={(email) => this.setState({email})}
+            onChangeText={(emailValue) => this.setState({email: emailValue})}
             value={email}
             autoCapitalize="none"
           />
@@ -73,7 +73,7 @@ class Signup extends React.Component {
             autoCompleteType="password"
             secureTextEntry={true}
             textContentType="password"
-            onChangeText={(password) => this.setState({password})}
+            onChangeText={(passwordValue) => this.setState({password: passwordValue})}
             value={password}
           />
           <TouchableOpacity

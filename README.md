@@ -13,13 +13,15 @@ On this workshop:
 
 `yarn`
 
-`cd ios && pod install`
+`cd ios && pod install` (when running on iOS)
 
 `cd ..`
 
 `npx react-native run-ios`
 
-`yarn start`
+ or
+
+`npx react-native run-android`
 
 
 ## Workshop Goals 🥅
@@ -42,7 +44,7 @@ Main goals of this workshop are:
     1. Get existing tasks
 
     2. Create a new task
-    
+
 Please leave your feedback on this short form 🙏 :
 https://forms.gle/uXJVnLuJcJLUNKMW9
 

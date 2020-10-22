@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, StyleSheet, StatusBar, Alert} from 'react-native';
-import {elephant} from './colors';
+import {View, StyleSheet, StatusBar, Alert, Image, Text} from 'react-native';
+import {elephant, white} from './colors';
 import {_storeData} from './localStorage';
 import NavigationService from './NavigationService';
 import {rootURL} from './services';
@@ -41,6 +41,8 @@ class Login extends React.Component {
       <View>
         <StatusBar barStyle="light-content" />
         <View style={styles.container}>
+          <Image style={styles.logo} source={require('./Logo.png')} />
+          <Text style={styles.mainTitle}>Login</Text>
           {/* Add login components here. Don't forget to import components you need */}
         </View>
       </View>
@@ -50,12 +52,23 @@ class Login extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    padding: 24,
+    paddingTop: 150,
     alignItems: 'center',
     height: '100%',
     backgroundColor: elephant,
     // You might need some of them here, too:
 
     //
+  },
+  logo: {
+    marginBottom: 80,
+    alignSelf: 'center',
+  },
+  mainTitle: {
+    alignSelf: 'flex-start',
+    color: white,
+    fontSize: 20,
   },
   //Add remaining styles here:
 

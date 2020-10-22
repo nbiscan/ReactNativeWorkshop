@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, StatusBar, StyleSheet, FlatList, Text} from 'react-native';
-import {elephant} from './colors';
+import {elephant, white} from './colors';
 import {_retrieveData} from './localStorage';
 import {rootURL} from './services';
 
@@ -45,7 +45,6 @@ class First extends Component {
   );
 
   render() {
-    const {newTask, tasks} = this.state;
     return (
       <View>
         <StatusBar barStyle="light-content" />
@@ -54,9 +53,10 @@ class First extends Component {
 
           {/* */}
           {/* Use provided flatlist to render tasks fetched and saved in state */}
+          <Text style={styles.title}>Create a new task:</Text>
           <FlatList
             style={styles.list}
-            data={tasks}
+            data={this.state.tasks}
             renderItem={this.renderItem}
             keyExtractor={(item) => item.id}
           />
@@ -72,8 +72,12 @@ const styles = StyleSheet.create({
     paddingTop: 68,
     padding: 24,
     backgroundColor: elephant,
+    // You might need some of them here, too:
+
+    //
   },
   list: {marginTop: 24},
+  title: {fontSize: 20, color: white},
   //insert styles below
 
   //

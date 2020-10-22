@@ -44,7 +44,6 @@ class Signup extends React.Component {
   };
 
   render() {
-    const {email, password, name} = this.state;
     return (
       <View>
         <StatusBar barStyle="light-content" />
@@ -55,7 +54,7 @@ class Signup extends React.Component {
             style={styles.input}
             placeholder="username"
             onChangeText={(nameValue) => this.setState({name: nameValue})}
-            value={name}
+            value={this.state.name}
             autoCapitalize="none"
           />
           <TextInput
@@ -64,7 +63,7 @@ class Signup extends React.Component {
             autoCompleteType="email"
             keyboardType="email-address"
             onChangeText={(emailValue) => this.setState({email: emailValue})}
-            value={email}
+            value={this.state.email}
             autoCapitalize="none"
           />
           <TextInput
@@ -73,8 +72,10 @@ class Signup extends React.Component {
             autoCompleteType="password"
             secureTextEntry={true}
             textContentType="password"
-            onChangeText={(passwordValue) => this.setState({password: passwordValue})}
-            value={password}
+            onChangeText={(passwordValue) =>
+              this.setState({password: passwordValue})
+            }
+            value={this.state.password}
           />
           <TouchableOpacity
             onPress={() => this.handleSignup()}

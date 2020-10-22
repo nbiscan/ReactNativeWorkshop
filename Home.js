@@ -49,11 +49,11 @@ class First extends Component {
       <View>
         <StatusBar barStyle="light-content" />
         <View style={styles.container}>
+          <Text style={styles.title}>Create a new task:</Text>
           {/* Add necessary components here */}
 
           {/* */}
           {/* Use provided flatlist to render tasks fetched and saved in state */}
-          <Text style={styles.title}>Create a new task:</Text>
           <FlatList
             style={styles.list}
             data={this.state.tasks}

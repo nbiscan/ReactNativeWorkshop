@@ -45,6 +45,8 @@ Main goals of this workshop are:
 
     2. Create a new task
 
+Use following designs as guiding lines: https://www.figma.com/file/B8DWMycfIeWuTS6c5cFJmW/Natko-Workshop?node-id=0%3A1
+
 Please leave your feedback on this short form 🙏 :
 https://forms.gle/uXJVnLuJcJLUNKMW9
 

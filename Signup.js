@@ -13,6 +13,7 @@ import NavigationService from './NavigationService';
 import {elephant, persimmon, white} from './colors';
 import {rootURL} from './services';
 import {_storeData} from './localStorage';
+import axios from 'axios';
 
 class Signup extends React.Component {
   state = {
@@ -22,20 +23,20 @@ class Signup extends React.Component {
   };
 
   handleSignup = () => {
-    fetch(`${rootURL}/signup`, {
+    axios({
+      url: `${rootURL}/signup`,
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
+      data: {
         email: this.state.email,
         password: this.state.password,
         name: this.state.name,
-      }),
+      },
     })
-      .then((res) => res.json())
       .then(async (res) => {
-        await _storeData('token', res.authToken);
+        await _storeData('token', res.data.authToken);
         NavigationService.navigate('Home');
       })
       .catch((e) => {

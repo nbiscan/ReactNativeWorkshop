@@ -3,6 +3,7 @@ import {View, StatusBar, StyleSheet, FlatList, Text} from 'react-native';
 import {elephant, white} from './colors';
 import {_retrieveData} from './localStorage';
 import {rootURL} from './services';
+import axios from 'axios';
 
 class First extends Component {
   static navigationOptions = {
@@ -19,13 +20,14 @@ class First extends Component {
 
   async componentDidMount() {
     const token = await _retrieveData('token');
-    // fetch(`${rootURL}/tasks`, {
+    // axios({
+    //   url: `${rootURL}/tasks`,
     //   method: 'GET',
     //   headers: {
     //     Authorization: `Bearer ${token}`,
     //   },
-    // });
-    //  finish fetch call which gets tasks by saving them to state
+    // })
+    //  finish axios call which gets tasks by saving them to state
 
     //
   }

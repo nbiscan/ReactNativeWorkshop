@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import {View, StyleSheet, StatusBar, Alert, Image, Text} from 'react-native';
 import {elephant, white} from './colors';
 import {_storeData} from './localStorage';
@@ -14,26 +15,24 @@ class Login extends React.Component {
   handleLogin = () => {
     const {email, password} = this.state;
 
-    fetch(`${rootURL}/login`, {
+    axios({
+      url: `${rootURL}/login`,
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
+      data: {
         email,
         password,
-      }),
+      },
     })
-      .then((res) => res.json())
       .then(async (res) => {
-        await _storeData('token', res.authToken);
+        await _storeData('token', res.data.authToken);
         NavigationService.navigate('Home');
       })
       .catch((e) => {
-        Alert.alert(e);
+        Alert.alert('Wrong credentials');
       });
-
-    NavigationService.navigate('Home');
   };
 
   render() {
